@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-import { chromium, Browser } from "playwright";
+import { chromium, type Browser } from "playwright";
 import WebSocket from "ws";
 import { scanWebsite } from "./scan";
 
@@ -40,6 +40,7 @@ ws.on("message", async (data) => {
       isPhishing: res.isPhishing,
       url: url.split("//")[1],
       explanation: res.explanation,
+      confidence: res.confidence,
     }),
   );
 });
