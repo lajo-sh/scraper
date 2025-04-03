@@ -1,8 +1,12 @@
 import "dotenv/config";
 
-import { chromium, type Browser } from "playwright";
+import { chromium } from "playwright-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+import type { Browser } from "playwright";
 import WebSocket from "ws";
 import { scanWebsite } from "./scan";
+
+chromium.use(StealthPlugin());
 
 const ws = new WebSocket("ws://localhost:8000/connect", {
   headers: {
